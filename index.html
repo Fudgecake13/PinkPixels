@@ -5,16 +5,22 @@
 
 body {
     background-color: #ffeaf3;
-    /* This adds the doodle pattern background and repeats it cleanly across the page */
     background-image: url('https://i.pinimg.com/736x/88/4b/32/884b32da344bf5fa624a04d2e2ca1ec3.jpg'); 
     background-repeat: repeat;
-    background-size: 180px; /* Adjust this to make the doodles bigger or smaller */
+    background-size: 180px; 
     font-family: Arial, sans-serif;
     text-align: center;
+    overflow-x: hidden; /* Prevents floating doodles from creating horizontal scrollbars */
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
 }
 
 h2 {
     color: #d63384;
+    margin-top: 30px;
+    position: relative;
+    z-index: 10; /* Ensures text stays above floating doodles */
 }
 
 .board {
@@ -23,6 +29,8 @@ h2 {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     gap: 10px;
+    position: relative;
+    z-index: 10; /* Ensures board stays above floating doodles */
 }
 
 .cell {
@@ -37,9 +45,9 @@ h2 {
     font-size: 55px;
     font-weight: bold;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    cursor: pointer;
 }
 
-/* Keeps 'X' white and adds a text-shadow so it pops beautifully on the doodles */
 .x {
     color: white;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -49,6 +57,34 @@ h2 {
     color: #d6336c;
 }
 
+/* --- Floating Doodles Setup --- */
+.floating-doodle {
+    position: absolute;
+    font-size: 30px;
+    user-select: none;
+    pointer-events: none; /* Stops them from blocking clicks on the game */
+    z-index: 1;
+    animation: floatAround 6s ease-in-out infinite alternate;
+}
+
+/* Individual placements and variation in speeds for a natural feel */
+.d1 { top: 15%; left: 10%; animation-duration: 5s; }
+.d2 { top: 20%; right: 12%; animation-duration: 7s; animation-delay: 1s; }
+.d3 { bottom: 25%; left: 8%; animation-duration: 6s; animation-delay: 0.5s; }
+.d4 { bottom: 20%; right: 10%; animation-duration: 8s; animation-delay: 1.5s; }
+.d5 { top: 50%; left: 18%; animation-duration: 5.5s; }
+.d6 { top: 45%; right: 15%; animation-duration: 6.5s; }
+
+/* The magic floating animation */
+@keyframes floatAround {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
 </style>
 </head>
 
@@ -56,21 +92,26 @@ h2 {
 
 <h2>💕 Tic Tac Toe 💕</h2>
 
+<!-- These are your new floating doodle elements dispersed around the screen -->
+<div class="floating-doodle d1">✨</div>
+<div class="floating-doodle d2">🌸</div>
+<div class="floating-doodle d3">🧸</div>
+<div class="floating-doodle d4">⭐️</div>
+<div class="floating-doodle d5">🎀</div>
+<div class="floating-doodle d6">💭</div>
+
 <div class="board">
-
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-
-<div class="cell"></div>
-<div class="cell"></div>
-<div class="cell"></div>
-
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
 </div>
+
 <script src="script.js"></script>
 </body>
 </html>
