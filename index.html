@@ -3,48 +3,50 @@
 <head>
 <style>
 
-body{
-background-color:#ffeaf3;
-font-family:Arial,sans-serif;
-text-align:center;
+body {
+    background-color: #ffeaf3;
+    /* This adds the doodle pattern background and repeats it cleanly across the page */
+    background-image: url('https://i.pinimg.com/736x/88/4b/32/884b32da344bf5fa624a04d2e2ca1ec3.jpg'); 
+    background-repeat: repeat;
+    background-size: 180px; /* Adjust this to make the doodles bigger or smaller */
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
-h2{
-color:#d63384;
+h2 {
+    color: #d63384;
 }
 
-.board{
-width:330px;
-margin:30px auto;
-
-display:grid;
-grid-template-columns:repeat(3,100px);
-gap:10px;
+.board {
+    width: 330px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 10px;
 }
 
-.cell{
-width:100px;
-height:100px;
-background:#ffc9dc;
-border:3px solid white;
-border-radius:15px;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-font-size:55px;
-font-weight:bold;
-
-box-shadow:0 4px 8px rgba(0,0,0,0.15);
+.cell {
+    width: 100px;
+    height: 100px;
+    background: #ffc9dc;
+    border: 3px solid white;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 55px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.x{
-color:white;
+/* Keeps 'X' white and adds a text-shadow so it pops beautifully on the doodles */
+.x {
+    color: white;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.o{
-color:#d6336c;
+.o {
+    color: #d6336c;
 }
 
 </style>
